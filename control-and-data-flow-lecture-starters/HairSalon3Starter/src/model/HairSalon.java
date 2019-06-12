@@ -5,10 +5,12 @@ import java.util.ArrayList;
 public class HairSalon {
 
     private ArrayList<Customer> bookings;
+    private int maxTime;
 
     public HairSalon(){
+        maxTime = 17;
         bookings = new ArrayList<>();
-        for (int i = 0; i < 17; i++) {
+        for (int i = 0; i <= maxTime; i++) {
             // note to students: this is a for-loop
             // it will repeatedly run the statements in this code block
             // incrementing i each time
@@ -20,14 +22,14 @@ public class HairSalon {
     // MODIFIES: this and Customer
     // EFFECTS:  books the customer into the requested timeslot if it is a valid timeslot, and let's the Customer know the booking time.
     public void makeNewBooking(Customer c, int bookingTime) {
-        System.out.println("Customer "+ c.getName() + " has been booked at " + bookingTime++);
+        System.out.println("Customer "+ c.getName() + " has been booked at " + bookingTime);
         bookings.set(bookingTime, c);
         c.setBookedTime(bookingTime);
     }
 
     // EFFECTS: prints out all the bookings.  If the time has not been booked, prints "available"
     public void printBookingsList() {
-        for (int i = 9; i <= 19; i++) {
+        for (int i = 9; i < bookings.size(); i++) {
             Customer c = bookings.get(i);
             if (c != null){
                 System.out.print(i + "hrs: ");
@@ -43,7 +45,7 @@ public class HairSalon {
     // EFFECTS: returns true if the customer is found at the booking time.
     public boolean verifyBooking(Customer c, int bookingTime) {
         Customer bookedCustomer = bookings.get(bookingTime);
-        if (bookedCustomer != null){
+        if (bookedCustomer == null){
             System.out.println("There is no customer booked at that time");
             return false;
         }

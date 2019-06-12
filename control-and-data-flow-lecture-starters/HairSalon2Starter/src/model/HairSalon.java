@@ -23,6 +23,7 @@ public class HairSalon {
     public void makeNewBooking(Customer c, int bookingTime) {
         System.out.println("Customer " + c.getName() + " has been booked at " + bookingTime);
         bookings.set(bookingTime,c);
+        c.setBookedTime(bookingTime);
     }
 
     // EFFECTS: prints out all the bookings.  If the time has not been booked, prints "available"
@@ -57,8 +58,7 @@ public class HairSalon {
     // EFFECTS: returns true if the customer is booked at the booking time
     public boolean confirmBookedName(String cName, int bookingTime) {
         Customer bookedCustomer = bookings.get(bookingTime);
-        Customer namedPerson = new Customer(cName);
-        boolean isPersonBooked = bookedCustomer == namedPerson;
+        boolean isPersonBooked = bookedCustomer.getName() == cName;
         return isPersonBooked;
     }
 
@@ -67,10 +67,10 @@ public class HairSalon {
     public void changeBooking(Customer customer, int newTime) {
         int bookedTime = customer.getBookingTime();
         System.out.print(customer.getName() + "'s time is changing from " + bookedTime);
-        bookedTime = newTime;
-        System.out.println(" to " + bookedTime);
+        System.out.println(" to " + newTime);
         bookings.set(newTime, customer);
         bookings.set(bookedTime, null);
+        customer.setBookedTime(newTime);
     }
 
 

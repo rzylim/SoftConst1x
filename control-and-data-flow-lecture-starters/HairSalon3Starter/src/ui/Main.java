@@ -12,7 +12,7 @@ public class Main {
         //book someone into the salon
         System.out.println("-------------Make and confirm booking-----------");
         Customer elisa = new Customer("Elisa");
-        laBelleSalon.makeNewBooking(elisa, 22);
+        laBelleSalon.makeNewBooking(elisa, 12);
         laBelleSalon.verifyBooking(elisa, 12);
         elisa.confirmBooking();
 
