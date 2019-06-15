@@ -23,7 +23,7 @@ public class HairSalonTest {
     @Test
     public void testMakeBookingAtAvailableTime(){
         assertTrue(laBelleSalon.makeNewBooking(elisa, 15));
-        assertFalse(laBelleSalon.verifyBooking(elisa, 15));
+        assertTrue(laBelleSalon.verifyBooking(elisa, 15));
         elisa.setBookedTime(15);
     }
 
@@ -61,14 +61,15 @@ public class HairSalonTest {
     @Test
     public void makeMultipleBookingsOutOfOrderRefactored(){
         Customer bill11 = new Customer("Bill 11");
-        boolean bill11Booked = laBelleSalon.makeNewBooking(bill11, 11);
         Customer bob10 = new Customer("Bob 10");
-        boolean bob10Booked = laBelleSalon.makeNewBooking(bob10, 10);
         Customer sara9 = new Customer("Sara 9");
-        boolean sara9Booked = laBelleSalon.makeNewBooking(sara9, 9);
         Customer jim15 = new Customer("Jim 15");
-        boolean jim15Booked = laBelleSalon.makeNewBooking(jim15, 15);
         Customer sven16 = new Customer("bill");
+
+        boolean bill11Booked = laBelleSalon.makeNewBooking(bill11, 11);
+        boolean bob10Booked = laBelleSalon.makeNewBooking(bob10, 10);
+        boolean sara9Booked = laBelleSalon.makeNewBooking(sara9, 9);
+        boolean jim15Booked = laBelleSalon.makeNewBooking(jim15, 15);
         boolean sven16Booked = laBelleSalon.makeNewBooking(sven16, 16);
         assertTrue(bill11Booked);
         assertTrue(bob10Booked);
@@ -118,5 +119,10 @@ public class HairSalonTest {
         assertTrue(laBelleSalon.verifyBooking(elisa, 17));
     }
 
+    @Test
+    public void testMakeLateBooking(){
+        assertFalse(laBelleSalon.makeNewBooking(elisa,18));
+        assertFalse(laBelleSalon.makeNewBooking(elisa,19));
+    }
 
 }

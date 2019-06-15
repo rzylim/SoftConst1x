@@ -37,6 +37,7 @@ public class FerryTest {
         Passenger testPassenger = new Passenger("Bruce Wayne");
         Ticket testTicket = new Ticket(testFerry, testPassenger);
         testFerry.addTicket(testTicket);
+        assertTrue(testFerry.checkTicket(testTicket));
     }
 
     @Test

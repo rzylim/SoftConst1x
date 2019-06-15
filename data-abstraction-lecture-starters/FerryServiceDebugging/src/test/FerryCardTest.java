@@ -31,6 +31,8 @@ public class FerryCardTest {
     public void testTopUp() {
         testFerryCard.topUp(20);
         assertEquals(testFerryCard.getBalance(), 20);
+        testFerryCard.topUp(20);
+        assertEquals(40, testFerryCard.getBalance());
     }
 
     @Test

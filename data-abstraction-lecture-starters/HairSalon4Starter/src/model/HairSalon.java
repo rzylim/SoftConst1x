@@ -22,10 +22,10 @@ public class HairSalon {
     public boolean makeNewBooking(Customer c, int bookingTime) {
         if (bookingTime >= bookings.size()) {
             System.out.println("We can't process that booking time");
-            return true;
+            return false;
         }
         System.out.println("Customer " + c.getName() + " has been booked at " + bookingTime);
-        bookings.add(bookingTime, c);
+        bookings.set(bookingTime, c);
         c.setBookedTime(bookingTime);
         return true;
     }
@@ -54,8 +54,9 @@ public class HairSalon {
         }
         if (bookedCustomer.getName().equals(c.getName())) {
             System.out.println("Yes the customer is booked at that time");
+            return true;
         }
-        return true;
+        return false;
     }
 
     // EFFECTS: returns true if the customer is booked at the booking time

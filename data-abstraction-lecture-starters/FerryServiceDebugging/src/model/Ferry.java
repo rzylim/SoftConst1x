@@ -14,8 +14,8 @@ public class Ferry {
     public Ferry(String destination, Date sailingDate, int ticketPrice) {
         this.destination = destination;
         this.sailingDate = sailingDate;
-        this.ticketPrice = 0;
-        ticketSet = new HashSet<>();
+        this.ticketPrice = ticketPrice;
+        this.ticketSet = new HashSet<>();
     }
 
     // getters
@@ -48,9 +48,9 @@ public class Ferry {
 
     // MODIFIES: this
     // EFFECTS: adds a ticket to the set of tickets
-    public void addTicket(Ticket ticket) {
-        ticketSet.add(ticket);
-    }
+    public void addTicket(Ticket ticket) { ticketSet.add(ticket); }
 
+    // EFFECTS: returns true if ticket is in ticketSet, false otherwise.
+    public Boolean checkTicket(Ticket ticket) { return ticketSet.contains(ticket); }
 
 }
